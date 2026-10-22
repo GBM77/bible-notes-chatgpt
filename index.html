@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#355548">
+<title>微光｜屬靈讀經筆記</title>
+<style>
+:root{--green:#355548;--green2:#527663;--cream:#f7f5ee;--paper:#fffefa;--ink:#24352d;--muted:#69776f;--gold:#c6a76a;--line:#e2e6dd;--rose:#a65e53}
+*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:system-ui,-apple-system,"Noto Sans TC","Microsoft JhengHei",sans-serif;line-height:1.65}
+header{background:linear-gradient(120deg,#2c493c,#567765);color:white;padding:24px max(20px,calc((100% - 1120px)/2));}
+.brand{display:flex;gap:12px;align-items:center}.mark{width:42px;height:42px;border:1px solid #c9d8cc;border-radius:50%;display:grid;place-items:center;font-size:22px}.brand h1{font-size:22px;margin:0}.brand p{margin:2px 0 0;color:#e0e9e1;font-size:13px}
+.wrap{max-width:1120px;margin:24px auto;padding:0 18px 48px}.intro{margin-bottom:18px}.intro h2{margin:0 0 5px;font-size:25px}.intro p{margin:0;color:var(--muted)}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}.tab{border:1px solid var(--line);background:var(--paper);padding:10px 16px;border-radius:999px;cursor:pointer;color:var(--green);font-weight:650}.tab.active{background:var(--green);color:white;border-color:var(--green)}
+.layout{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(280px,.9fr);gap:18px;align-items:start}.panel{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 5px 18px #253a2b08}.panel h3{margin:0 0 12px;font-size:18px}.field{margin:12px 0}.field label{display:block;font-size:13px;color:var(--muted);font-weight:700;margin-bottom:5px}input,select,textarea{width:100%;font:inherit;border:1px solid #d7ded5;border-radius:10px;background:white;padding:10px 12px;color:var(--ink)}textarea{min-height:92px;resize:vertical}input:focus,select:focus,textarea:focus{outline:2px solid #b8cbbd;border-color:var(--green2)}.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.btns{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px}.btn{border:0;border-radius:10px;padding:10px 15px;background:var(--green);color:white;font:inherit;font-weight:700;cursor:pointer}.btn.secondary{background:#e8eee8;color:var(--green)}.btn.gold{background:#f1e8d5;color:#6b542d}.btn.danger{background:#f7e8e5;color:#8a3e35}.btn:disabled{opacity:.45;cursor:not-allowed}.hint{font-size:12px;color:var(--muted)}.steps{display:flex;gap:6px;margin:0 0 16px}.step{height:5px;flex:1;border-radius:8px;background:#e4e9e2}.step.done{background:var(--gold)}.question{font-size:19px;font-weight:750;margin:4px 0 8px}.verse{background:#f0f3ec;border-left:3px solid var(--gold);padding:12px 14px;border-radius:0 10px 10px 0;margin:12px 0;font-size:14px}.output{white-space:pre-wrap;overflow-wrap:anywhere}.note-item{border:1px solid var(--line);border-radius:12px;padding:13px;margin:10px 0}.note-item h4{margin:0 0 3px}.note-item p{margin:4px 0;color:var(--muted);font-size:13px}.empty{padding:20px 8px;text-align:center;color:var(--muted)}.tag{display:inline-block;background:#e8eee8;color:var(--green);border-radius:6px;padding:2px 7px;font-size:12px;margin-right:5px}.notice{font-size:12px;color:var(--muted);background:#f6f3e9;padding:10px 12px;border-radius:10px;margin-top:12px}.hide{display:none!important}footer{text-align:center;color:var(--muted);font-size:12px;margin-top:24px}
+@media(max-width:760px){.layout{grid-template-columns:1fr}.row{grid-template-columns:1fr}.wrap{margin-top:18px}.panel{padding:16px}header{padding:20px}}
+</style>
+</head>
+<body>
+<header><div class="brand"><div class="mark">✦</div><div><h1>微光｜屬靈讀經筆記</h1><p>讓神的話進入生活，而不只停留在紙上</p></div></div></header>
+<main class="wrap">
+<section class="intro"><h2>今天，留一點時間與神相遇</h2><p>用一鍵整理快速開始，或透過引導式問題，慢慢觀察、思想、回應與實踐。</p></section>
+<div class="tabs"><button class="tab active" data-tab="guided">引導式讀經</button><button class="tab" data-tab="quick">一鍵生成筆記</button><button class="tab" data-tab="library">我的筆記</button></div>
+<div class="layout">
+<section class="panel" id="workPanel">
+<div id="guidedView">
+<h3>引導式｜一步一步寫下你的領受</h3><div class="steps"><div class="step done"></div><div class="step"></div><div class="step"></div><div class="step"></div><div class="step"></div></div>
+<div class="row"><div class="field"><label for="gBook">經文／書卷</label><input id="gBook" placeholder="例如：約翰福音 15:1–8"></div><div class="field"><label for="gDate">日期</label><input id="gDate" type="date"></div></div>
+<div class="verse" id="guidedPrompt">第一步：安靜下來。你今天讀的是哪一段經文？請先寫下經文範圍；建議直接閱讀手邊的聖經。</div>
+<div class="field"><label id="qLabel" for="gAnswer">我的回答</label><textarea id="gAnswer" placeholder="不必寫得完美，先誠實寫下來……"></textarea></div>
+<div class="btns"><button class="btn secondary" id="prevStep">上一步</button><button class="btn" id="nextStep">下一步</button></div>
+<p class="hint">引導順序：安靜與觀察 → 經文意思 → 與我有何關係 → 回應與禱告 → 一個可實踐的行動。</p>
+</div>
+<div id="quickView" class="hide">
+<h3>一鍵生成｜先整理，再由你辨識</h3>
+<p class="hint">填入經文範圍和你讀到的內容，按一下即可生成可編輯的筆記架構。此版本不會假裝已讀取未提供的經文，也不會把推測當作神的直接啟示。</p>
+<div class="row"><div class="field"><label for="qBook">經文／書卷</label><input id="qBook" placeholder="例如：詩篇 23 篇"></div><div class="field"><label for="qDate">日期</label><input id="qDate" type="date"></div></div>
+<div class="field"><label for="qText">經文摘要／你觀察到的內容</label><textarea id="qText" placeholder="貼上你有權使用的經文，或寫下重點摘要……"></textarea></div>
+<div class="field"><label for="qFocus">今天特別想思想的事（選填）</label><input id="qFocus" placeholder="例如：焦慮、饒恕、服事、家庭關係"></div>
+<button class="btn" id="generate">生成我的讀經筆記</button>
+<div class="field"><label for="quickResult">可編輯筆記</label><textarea id="quickResult" style="min-height:360px" placeholder="生成後，筆記會出現在這裡，你可以繼續修改。"></textarea></div>
+<div class="btns"><button class="btn secondary" id="saveQuick">儲存筆記</button><button class="btn secondary" id="copyQuick">複製文字</button></div>
+</div>
+<div id="libraryView" class="hide">
+<h3>我的筆記</h3><p class="hint">筆記預設只儲存在目前這個瀏覽器的本機空間。清除瀏覽器資料或更換裝置可能導致筆記遺失，請定期匯出備份。</p>
+<div class="btns"><button class="btn secondary" id="exportNotes">匯出備份 JSON</button><label class="btn secondary" for="importFile" style="cursor:pointer">匯入備份</label><input id="importFile" type="file" accept="application/json" class="hide"></div>
+<div id="noteList"></div>
+</div>
+</section>
+<aside class="panel">
+<h3>屬靈導師的陪伴原則</h3>
+<div class="note-item"><h4>📖 先聽經文，再談應用</h4><p>區分「經文寫了什麼」、「我如何理解」和「我準備如何回應」，避免斷章取義。</p></div>
+<div class="note-item"><h4>🕊️ 不代替聖靈與群體</h4><p>AI 是整理與提問的輔助，不宣稱代表神發言，也不取代聖經、禱告、教會群體或牧者的陪伴。</p></div>
+<div class="note-item"><h4>🌱 小而真實的實踐</h4><p>把領受化為今天可完成的一個行動，並在下一次回顧：我做了什麼？遇到什麼困難？</p></div>
+<div class="field"><label for="memoryVerse">今日金句（自行填寫）</label><textarea id="memoryVerse" placeholder="經文與章節……" style="min-height:65px"></textarea></div>
+<div class="field"><label for="prayer">我的禱告</label><textarea id="prayer" placeholder="向神坦誠說出心裡的話……" style="min-height:85px"></textarea></div>
+<button class="btn gold" id="addPrayer">加入目前筆記</button>
+<div class="notice">隱私提醒：這是純前端示範，不會自動上傳你的內容。若未來接入雲端 AI，需清楚告知資料如何處理並取得同意。</div>
+</aside>
+</div>
+<footer>微光｜屬靈讀經筆記 · 安靜、觀察、回應、實踐</footer>
+</main>
+<script>
+const $=id=>document.getElementById(id);
+const today=()=>new Date().toLocaleDateString('en-CA');
+$('gDate').value=today();$('qDate').value=today();
+let activeTab='guided', step=0, answers=['','','','',''];
+const prompts=[
+['安靜與觀察','慢下來讀兩遍。有哪些字詞、人物、重複的句子或對比特別吸引你？先寫「我看見了什麼」，暫時不急著解釋。'],
+['理解經文','這段經文在原本的上下文中說了什麼？誰在說話、對誰說、當時的情境是什麼？有哪些地方需要查考或向成熟信徒請教？'],
+['與我相遇','這段經文讓你看見神的哪些作為或品格？它照亮了你目前的想法、態度或處境中的什麼？也可以寫下尚未理解之處。'],
+['回應與禱告','你想向神感謝、承認、求助或交託什麼？試著用自己的話寫一段真誠的禱告，不需要使用漂亮的句子。'],
+['今日實踐','接下來 24 小時內，你願意採取哪一個具體、可完成的行動？何時做？需要誰的支持？下次讀經時如何回顧？']
+];
+function renderStep(){ $('guidedPrompt').textContent=(step+1)+'／5　'+prompts[step][0]+'：'+prompts[step][1];$('qLabel').textContent=prompts[step][0]+'｜我的回答';$('gAnswer').value=answers[step];$('prevStep').disabled=step===0;$('nextStep').textContent=step===4?'整理成完整筆記':'下一步';document.querySelectorAll('.step').forEach((el,i)=>el.classList.toggle('done',i<=step));}
+$('gAnswer').addEventListener('input',()=>answers[step]=$('gAnswer').value);
+$('prevStep').onclick=()=>{answers[step]=$('gAnswer').value;if(step>0)step--;renderStep()};
+$('nextStep').onclick=()=>{answers[step]=$('gAnswer').value;if(step<4){step++;renderStep()}else{const book=$('gBook').value.trim()||'（尚未填寫經文）';const content=`微光｜屬靈讀經筆記\\n日期：${$('gDate').value||today()}\\n經文：${book}\\n\\n`+prompts.map((p,i)=>`${i+1}. ${p[0]}\\n${answers[i]||'（尚待補充）'}`).join('\\n\\n')+'\\n\\n今日金句：\\n\\n我的禱告：\\n\\n下次回顧：';switchTab('quick');$('qBook').value=book;$('qDate').value=$('gDate').value||today();$('quickResult').value=content;}};
+function switchTab(tab){activeTab=tab;document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b.dataset.tab===tab));$('guidedView').classList.toggle('hide',tab!=='guided');$('quickView').classList.toggle('hide',tab!=='quick');$('libraryView').classList.toggle('hide',tab!=='library');if(tab==='library')renderNotes();}
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>switchTab(b.dataset.tab));
+$('generate').onclick=()=>{const book=$('qBook').value.trim()||'（尚未填寫經文）', source=$('qText').value.trim(), focus=$('qFocus').value.trim();$('quickResult').value=`微光｜屬靈讀經筆記\\n日期：${$('qDate').value||today()}\\n經文：${book}\\n${focus?'今日焦點：'+focus+'\\n':''}\\n一、安靜與觀察\\n我讀到的內容：\\n${source||'（請先閱讀經文，再補上觀察）'}\\n\\n二、理解經文\\n- 上下文與原意：\\n- 重要詞句／重複／對比：\\n- 需要進一步查考的問題：\\n\\n三、看見神與自己\\n- 這段經文呈現神的哪些作為或品格？\\n- 它提醒我留意什麼？\\n- 我目前仍不明白的地方：\\n\\n四、回應與禱告\\n- 感謝／認罪／求助／交託：\\n- 我的禱告：\\n\\n五、今日實踐\\n- 一個具體行動：\\n- 何時完成：\\n- 下次回顧：\\n\\n提醒：以上是筆記架構，不是對經文的權威解釋；請按上下文查考，必要時與牧者或成熟信徒討論。`};
+function getNotes(){try{return JSON.parse(localStorage.getItem('linguangNotes')||'[]')}catch(e){return []}}
+function setNotes(n){localStorage.setItem('linguangNotes',JSON.stringify(n))}
+function saveNote(content,book){if(!content.trim()){alert('請先寫下筆記內容。');return}const notes=getNotes();notes.unshift({id:Date.now(),date:today(),book:book||'讀經筆記',content});setNotes(notes);alert('已儲存在這個瀏覽器。')}
+$('saveQuick').onclick=()=>saveNote($('quickResult').value,$('qBook').value.trim());
+$('copyQuick').onclick=async()=>{try{await navigator.clipboard.writeText($('quickResult').value);alert('已複製筆記。')}catch(e){$('quickResult').select();document.execCommand('copy');alert('若未自動複製，請手動複製選取內容。')}};
+$('addPrayer').onclick=()=>{const extra=`\\n今日金句：${$('memoryVerse').value}\\n我的禱告：${$('prayer').value}\\n`;if(activeTab==='guided'){switchTab('quick');$('quickResult').value+=extra}else if(activeTab==='quick')$('quickResult').value+=extra;else{alert('請先切換到筆記編輯頁，再加入金句與禱告。')}};
+function renderNotes(){const list=$('noteList'),notes=getNotes();list.innerHTML='';if(!notes.length){list.innerHTML='<div class="empty">還沒有儲存的筆記。完成一次讀經後，按「儲存筆記」即可收藏。</div>';return}notes.forEach(n=>{const d=document.createElement('div');d.className='note-item';const h=document.createElement('h4');h.textContent=n.book;const p=document.createElement('p');p.textContent=n.date;const pre=document.createElement('div');pre.className='output';pre.textContent=n.content.slice(0,260)+(n.content.length>260?'…':'');const actions=document.createElement('div');actions.className='btns';const open=document.createElement('button');open.className='btn secondary';open.textContent='開啟編輯';open.onclick=()=>{switchTab('quick');$('quickResult').value=n.content;$('qBook').value=n.book};const del=document.createElement('button');del.className='btn danger';del.textContent='刪除';del.onclick=()=>{if(confirm('確定刪除這篇筆記？')){setNotes(getNotes().filter(x=>x.id!==n.id));renderNotes()}};actions.append(open,del);d.append(h,p,pre,actions);list.append(d)})}
+$('exportNotes').onclick=()=>{const blob=new Blob([JSON.stringify(getNotes(),null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='linguang-spiritual-notes-backup.json';a.click();URL.revokeObjectURL(url)};
+$('importFile').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{const data=JSON.parse(await f.text());if(!Array.isArray(data))throw new Error();setNotes([...data,...getNotes()]);alert('匯入完成。');renderNotes()}catch(err){alert('檔案格式不正確，請選擇先前匯出的 JSON 備份。')}e.target.value=''};
+renderStep();
+</script>
+</body>
+</html>
